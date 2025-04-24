@@ -3,8 +3,12 @@ package tests.otusTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import pages.TrainingPage;
 import tests.BaseSuite;
+import tests.TestFailureListener;
 
 ;
 
@@ -12,7 +16,8 @@ public class WebDriverTests extends BaseSuite {
 
     @Test
     @Tag("test")
-//    @Execution(ExecutionMode.CONCURRENT)
+    @ExtendWith(TestFailureListener.class)
+    @Execution(ExecutionMode.CONCURRENT)
     @DisplayName("Тест в режиме HEADLESS")
     public void testOne() {
         String enterText = "ОТУС";
@@ -20,7 +25,6 @@ public class WebDriverTests extends BaseSuite {
 
         TrainingPage trainingPage = new TrainingPage(driver);
         trainingPage.open();
-//        trainingPage.pageTitleShouldBeSameAs(FilterData.FULLSCREEN.getName());
 
         trainingPage.pageTitleShouldBeSameAs(title);
         trainingPage.textInputFieldMustBeSameAs(enterText);
@@ -29,7 +33,8 @@ public class WebDriverTests extends BaseSuite {
 
     @Test
     @Tag("test")
-//    @Execution(ExecutionMode.CONCURRENT)
+    @ExtendWith(TestFailureListener.class)
+    @Execution(ExecutionMode.CONCURRENT)
     @DisplayName("Тест в режиме KIOSK")
     public void testTwo() {
         String text = "Вы открыли модальное окно. Нажмите на крестик или в любое место вне окна, чтобы закрыть его.";
@@ -43,7 +48,8 @@ public class WebDriverTests extends BaseSuite {
 
     @Test
     @Tag("test")
-//    @Execution(ExecutionMode.CONCURRENT)
+    @ExtendWith(TestFailureListener.class)
+    @Execution(ExecutionMode.CONCURRENT)
     @DisplayName("Тест в режиме FULLSCREEN")
     public void testThree() {
         String name = "Александ";

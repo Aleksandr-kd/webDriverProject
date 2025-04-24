@@ -9,12 +9,12 @@ import org.openqa.selenium.WebDriver;
 
 public class AllureScreenshotUtils {
 
-
-    public void takeScreenshot(WebDriver driver, String name) {
-        if (driver == null) {
-            return;
+    public void takeScreenshot(WebDriver driver, String testName) {
+        if (driver instanceof TakesScreenshot screenshotTake) {
+            byte[] screenshot = screenshotTake.getScreenshotAs(OutputType.BYTES);
+            Allure.getLifecycle().addAttachment("Failure Screenshot: " + testName,
+                    "image/png",
+                    "png", screenshot);
         }
-        byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        Allure.getLifecycle().addAttachment(name, "image/png", "png", screenshot);
     }
 }

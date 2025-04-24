@@ -124,7 +124,6 @@ public class RegistrationFormPage extends AbsBasePage {
         setLanguageLevel(language);
     }
 
-
     @Step("Проверка регистрации")
     public void checkRegistration(String text) {
         assertThat(getTextRegistration().replace("\n", " "))

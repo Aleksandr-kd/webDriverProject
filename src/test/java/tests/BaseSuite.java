@@ -19,6 +19,7 @@ public abstract class BaseSuite {
     public void close() {
         if (driver != null) {
             driver.quit();
+            driver = null;
         }
     }
 

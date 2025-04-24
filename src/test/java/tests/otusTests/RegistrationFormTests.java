@@ -3,8 +3,12 @@ package tests.otusTests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import pages.RegistrationFormPage;
 import tests.BaseSuite;
+import tests.TestFailureListener;
 
 
 public class RegistrationFormTests extends BaseSuite {
@@ -12,7 +16,8 @@ public class RegistrationFormTests extends BaseSuite {
 
     @Test
     @Tag("autotest")
-//    @Execution(ExecutionMode.CONCURRENT)
+    @Execution(ExecutionMode.CONCURRENT)
+    @ExtendWith(TestFailureListener.class)
     @DisplayName("Тест в режиме fullscreen. Проверка регистрации.")
     public void testCorrect() throws InterruptedException {
         String name = "ОТУС";
@@ -37,7 +42,8 @@ public class RegistrationFormTests extends BaseSuite {
 
     @Test
     @Tag("autotest")
-//    @Execution(ExecutionMode.CONCURRENT)
+    @Execution(ExecutionMode.CONCURRENT)
+    @ExtendWith(TestFailureListener.class)
     @DisplayName("Тест в режиме fullscreen. Проверка валидации пароля.")
     public void testNotCorrect() throws InterruptedException {
         String name = "ОТУС";

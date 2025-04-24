@@ -28,7 +28,7 @@
         <selenium-java.version>4.22.0</selenium-java.version>
         <slf4j-api.version>2.0.15</slf4j-api.version>
         <allure-junit5.version>2.29.1</allure-junit5.version>
-        <allure.version>2.33.0</allure.version>
+        <allure.version>2.29.1</allure.version>
         <allure-maven.version>2.13.0</allure-maven.version>
         <aspectj.version>1.9.22</aspectj.version>
         <assertj-core.version>3.26.3</assertj-core.version>
@@ -77,6 +77,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <systemPropertyVariables>
                         <browser>chrome</browser>
                         <mode>headless</mode>
@@ -111,9 +114,4 @@
         </plugins>
     </build>
 </project>
-
-
-        <!--<argLine>-->
-        <!-- -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
-        <!--</argLine>-->
 
