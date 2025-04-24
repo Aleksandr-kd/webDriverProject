@@ -15,7 +15,7 @@ public abstract class BaseSuite {
         driver = new WebDriverFactory().getDriver();
     }
 
-    @AfterEach
+//    @AfterEach
     public void close() {
         if (driver != null) {
             driver.quit();

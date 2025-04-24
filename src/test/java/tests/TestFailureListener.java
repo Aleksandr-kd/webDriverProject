@@ -19,8 +19,12 @@ public class TestFailureListener implements TestWatcher {
             if (driver != null) {
                 screenshotUtils.takeScreenshot(driver, " Ошибка: " + context.getDisplayName());
             }
+//            assert driver != null;
+//            driver.quit();
             baseSuite.close();
         }
     }
+
+
 }
 
