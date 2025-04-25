@@ -85,10 +85,6 @@
                         <mode>headless</mode>
                         <base.url>${base.url}</base.url>
                     </systemPropertyVariables>
-                    <parallel>classesAndMethods</parallel>
-                    <threadCount>4</threadCount>
-                    <perCoreThreadCount>false</perCoreThreadCount>
-                    <forkCount>1</forkCount>
                 </configuration>
                 <dependencies>
                     <dependency>

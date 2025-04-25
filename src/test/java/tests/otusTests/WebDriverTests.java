@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebDriver;
 import pages.TrainingPage;
 import tests.TestSetupExtension;
@@ -16,7 +14,6 @@ public class WebDriverTests {
 
     @Test
     @Tag("test")
-    @Execution(ExecutionMode.CONCURRENT)
     @DisplayName("Проверка открытия верной страницы")
     public void testOne(WebDriver driver) {
         String enterText = "ОТУС";
@@ -32,7 +29,6 @@ public class WebDriverTests {
 
     @Test
     @Tag("test")
-    @Execution(ExecutionMode.CONCURRENT)
     @DisplayName("Проверка открытия модального окна")
     public void testTwo(WebDriver driver) {
         String text = "Вы открыли модальное окно. Нажмите на крестик или в любое место вне окна, чтобы закрыть его.";
@@ -47,7 +43,6 @@ public class WebDriverTests {
 
     @Test
     @Tag("test")
-    @Execution(ExecutionMode.CONCURRENT)
     @DisplayName("Проверка формы")
     public void testThree(WebDriver driver) {
         String name = "Александ";
