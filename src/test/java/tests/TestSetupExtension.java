@@ -36,7 +36,6 @@ public class TestSetupExtension implements BeforeEachCallback, AfterTestExecutio
         return parameterContext.getParameter().getType().equals(WebDriver.class);
     }
 
-
     @Override
     public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) {
         return driverThreadLocal.get();

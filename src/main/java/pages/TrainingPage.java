@@ -86,33 +86,34 @@ public class TrainingPage extends AbsBasePage {
         return messageBox.getText();
     }
 
-    @Step("Проверка открытия нужной страницы")
-    public void pageTitleShouldBeSameAs(String title) {
-        assertThat(getSimulatorPageText())
-                .as(" Title of page should be {}", title)
-                .isEqualTo(title);
-    }
-
-    @Step("Проверка ввода текст")
-    public void textInputFieldMustBeSameAs(String text) {
-        assertThat(setTextInput(text)).isEqualTo(text);
-    }
-
-    @Step("Проверка работы модального окна")
-    public void openingModalWindow(String text) {
-        openModal();
-        assertThat(getTextModal()).isEqualTo(text);
-    }
-
-    @Step("Вводим имя и почту")
+    @Step("Ввести имя и почту")
     public void openingModalWindow(String name, String email) {
         enterName(name);
         enterEmail(email);
         clickSend();
     }
 
+    @Step("Проверка работы модального окна")
+    public void openingModalWindow(String text) {
+        assertThat(getTextModal())
+                .isEqualTo(text);
+    }
+
     @Step("Проверка сообщения на залёном фоне")
     public void messageGreenBackground(String text) {
-        assertThat(getTextGreen()).isEqualTo(text);
+        assertThat(getTextGreen())
+                .isEqualTo(text);
+    }
+
+    @Step("Проверка открытия нужной страницы")
+    public void pageTitleShouldBeSameAs(String title) {
+        assertThat(getSimulatorPageText())
+                .isEqualTo(title);
+    }
+
+    @Step("Проверка ввода текст")
+    public void textInputFieldMustBeSameAs(String text) {
+        assertThat(setTextInput(text))
+                .isEqualTo(text);
     }
 }

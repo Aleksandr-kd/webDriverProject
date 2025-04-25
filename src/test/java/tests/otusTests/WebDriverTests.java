@@ -40,6 +40,7 @@ public class WebDriverTests {
         TrainingPage trainingPage = new TrainingPage(driver);
         trainingPage.open();
 
+        trainingPage.openModal();
         trainingPage.openingModalWindow(text);
         trainingPage.closeModal();
     }

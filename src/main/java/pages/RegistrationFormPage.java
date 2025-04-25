@@ -125,19 +125,20 @@ public class RegistrationFormPage extends AbsBasePage {
     }
 
     @Step("Проверка регистрации")
-    public void checkRegistration(String text) {
+    public void checkRegistration(String title) {
         assertThat(getTextRegistration().replace("\n", " "))
-                .isEqualTo(text.replace("\n", " "));
+                .isEqualTo(title.replace("\n", " "));
     }
 
     @Step("Проверка ввода повторного пароля")
-    public void checkRegistrationFalse(String text){
+    public void checkRegistrationFalse(String title) {
         assertThat(getAlertText())
-                .isEqualTo(text);
+                .isEqualTo(title);
     }
 
     @Step("Отображения уведомления об ошибки")
-    public void passwordErrorDisplayed(){
-        assertThat(isPasswordErrorDisplayed()).isFalse();
+    public void passwordErrorDisplayed() {
+        assertThat(isPasswordErrorDisplayed())
+                .isFalse();
     }
 }
