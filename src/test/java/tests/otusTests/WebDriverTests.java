@@ -6,20 +6,19 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.openqa.selenium.WebDriver;
 import pages.TrainingPage;
-import tests.BaseSuite;
-import tests.TestFailureListener;
+import tests.TestSetupExtension;
 
-;
 
-public class WebDriverTests extends BaseSuite {
+@ExtendWith(TestSetupExtension.class)
+public class WebDriverTests {
 
     @Test
     @Tag("test")
-    @ExtendWith(TestFailureListener.class)
     @Execution(ExecutionMode.CONCURRENT)
-    @DisplayName("Тест в режиме HEADLESS")
-    public void testOne() {
+    @DisplayName("Проверка открытия верной страницы")
+    public void testOne(WebDriver driver) {
         String enterText = "ОТУС";
         String title = "Тренажёр для оттачивания навыков работы с Selenium";
 
@@ -33,10 +32,9 @@ public class WebDriverTests extends BaseSuite {
 
     @Test
     @Tag("test")
-    @ExtendWith(TestFailureListener.class)
     @Execution(ExecutionMode.CONCURRENT)
-    @DisplayName("Тест в режиме KIOSK")
-    public void testTwo() {
+    @DisplayName("Проверка открытия модального окна")
+    public void testTwo(WebDriver driver) {
         String text = "Вы открыли модальное окно. Нажмите на крестик или в любое место вне окна, чтобы закрыть его.";
 
         TrainingPage trainingPage = new TrainingPage(driver);
@@ -48,10 +46,9 @@ public class WebDriverTests extends BaseSuite {
 
     @Test
     @Tag("test")
-    @ExtendWith(TestFailureListener.class)
     @Execution(ExecutionMode.CONCURRENT)
-    @DisplayName("Тест в режиме FULLSCREEN")
-    public void testThree() {
+    @DisplayName("Проверка формы")
+    public void testThree(WebDriver driver) {
         String name = "Александ";
         String email = "alexander@mail.ru";
         String text = String.format("Форма отправлена с именем: %s и email: %s", name, email);

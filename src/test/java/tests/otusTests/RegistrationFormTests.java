@@ -6,20 +6,20 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.openqa.selenium.WebDriver;
 import pages.RegistrationFormPage;
-import tests.BaseSuite;
-import tests.TestFailureListener;
+import tests.TestSetupExtension;
 
 
-public class RegistrationFormTests extends BaseSuite {
+@ExtendWith(TestSetupExtension.class)
+public class RegistrationFormTests {
 
 
     @Test
     @Tag("autotest")
     @Execution(ExecutionMode.CONCURRENT)
-    @ExtendWith(TestFailureListener.class)
-    @DisplayName("Тест в режиме fullscreen. Проверка регистрации.")
-    public void testCorrect() throws InterruptedException {
+    @DisplayName("Проверка регистрации.")
+    public void testCorrect(WebDriver driver) {
         String name = "ОТУС";
         String email = System.getProperty("login");
         String birthDate = "15-12-1995";
@@ -43,9 +43,8 @@ public class RegistrationFormTests extends BaseSuite {
     @Test
     @Tag("autotest")
     @Execution(ExecutionMode.CONCURRENT)
-    @ExtendWith(TestFailureListener.class)
-    @DisplayName("Тест в режиме fullscreen. Проверка валидации пароля.")
-    public void testNotCorrect() throws InterruptedException {
+    @DisplayName("Проверка валидации пароля.")
+    public void testNotCorrect(WebDriver driver) {
         String name = "ОТУС";
         String email = System.getProperty("login");
         String birthDate = "15-12-1995";

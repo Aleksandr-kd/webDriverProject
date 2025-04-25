@@ -1,6 +1,6 @@
-target
-.idea
-*.iml
-logs
-allure-results
 .allure
+.idea
+target
+*.iml
+allure-results
+
