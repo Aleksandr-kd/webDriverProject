@@ -28,13 +28,13 @@
         <selenium-java.version>4.22.0</selenium-java.version>
         <slf4j-api.version>2.0.15</slf4j-api.version>
         <allure-junit5.version>2.29.1</allure-junit5.version>
-        <allure.version>2.15.0</allure.version>
-        <allure.maven.version>2.15.0</allure.maven.version>
+        <allure.version>2.29.1</allure.version>
+        <allure-maven.version>2.15.2</allure-maven.version>
+        <allure-report.version>2.30.0</allure-report.version>
         <aspectj.version>1.9.22</aspectj.version>
         <assertj-core.version>3.26.3</assertj-core.version>
 
         <base.url>https://otus.home.kartushin.su</base.url>
-
     </properties>
 
     <dependencies>
@@ -126,12 +126,11 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>${allure.maven.version}</version>
+                <version>${allure-maven.version}</version>
                 <configuration>
-                    <reportVersion>${allure.version}</reportVersion>
+                    <reportVersion>${allure-report.version}</reportVersion>
                     <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                     <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
-                    <cleanResultsDirectory>true</cleanResultsDirectory>
                 </configuration>
             </plugin>
         </plugins>
