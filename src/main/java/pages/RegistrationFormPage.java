@@ -37,9 +37,6 @@ public class RegistrationFormPage extends AbsBasePage {
     @FindBy(id = "language_level")
     private WebElement languageLevel;
 
-    @FindBy(tagName = "[type='submit']")
-    private WebElement submit;
-
     @FindBy(css = "[id='output']")
     private WebElement output;
 

@@ -45,7 +45,8 @@ public class RegistrationFormTests {
     @Test
     @Tag("autotest")
     @DisplayName("Проверка валидации пароля.")
-    public void testNotCorrect(WebDriver driver) throws InterruptedException {
+    public void testNotCorrect(WebDriver driver) {
+
         String name = "ОТУС";
         String email = System.getProperty("login");
         String birthDate = "15-12-1995";
