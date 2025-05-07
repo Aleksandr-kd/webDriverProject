@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.TrainingPage;
-import tests.TestSetupExtension;
+import extension.TestSetupExtension;
 
 
 @ExtendWith(TestSetupExtension.class)
@@ -15,7 +15,7 @@ public class WebDriverTests {
     @Test
     @Tag("test")
     @DisplayName("Проверка открытия верной страницы")
-    public void testOne(WebDriver driver) {
+    public void pageValidation(WebDriver driver) {
         String enterText = "ОТУС";
         String title = "Тренажёр для оттачивания навыков работы с Selenium";
 
@@ -30,7 +30,7 @@ public class WebDriverTests {
     @Test
     @Tag("test")
     @DisplayName("Проверка открытия модального окна")
-    public void testTwo(WebDriver driver) {
+    public void modalWindowValidation(WebDriver driver) {
         String text = "Вы открыли модальное окно. Нажмите на крестик или в любое место вне окна, чтобы закрыть его.";
 
         TrainingPage trainingPage = new TrainingPage(driver);
@@ -44,7 +44,7 @@ public class WebDriverTests {
     @Test
     @Tag("test")
     @DisplayName("Проверка формы")
-    public void testThree(WebDriver driver) {
+    public void formValidation(WebDriver driver) {
         String name = "Александ";
         String email = "alexander@mail.ru";
         String text = String.format("Форма отправлена с именем: %s и email: %s", name, email);

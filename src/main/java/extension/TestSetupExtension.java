@@ -1,4 +1,4 @@
-package tests;
+package extension;
 
 import factory.WebDriverFactory;
 import org.junit.jupiter.api.extension.*;

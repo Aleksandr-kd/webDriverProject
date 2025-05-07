@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.RegistrationFormPage;
-import tests.TestSetupExtension;
+import extension.TestSetupExtension;
 
 
 @ExtendWith(TestSetupExtension.class)
@@ -16,7 +16,7 @@ public class RegistrationFormTests {
     @Test
     @Tag("autotest")
     @DisplayName("Проверка регистрации.")
-    public void testCorrect(WebDriver driver) {
+    public void testCorrectPassword(WebDriver driver) {
         String name = "ОТУС";
         String email = System.getProperty("login");
         String birthDate = "15-12-1995";
@@ -45,7 +45,7 @@ public class RegistrationFormTests {
     @Test
     @Tag("autotest")
     @DisplayName("Проверка валидации пароля.")
-    public void testNotCorrect(WebDriver driver) {
+    public void testNotCorrectPassword(WebDriver driver) {
 
         String name = "ОТУС";
         String email = System.getProperty("login");
