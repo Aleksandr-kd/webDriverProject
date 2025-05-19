@@ -26,7 +26,6 @@ public class WebDriverTests {
         trainingPage.textInputFieldMustBeSameAs(enterText);
     }
 
-
     @Test
     @Tag("test")
     @DisplayName("Проверка открытия модального окна")
