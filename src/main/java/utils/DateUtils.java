@@ -40,8 +40,8 @@ public class DateUtils {
     }
 
     public String dateFormatter(String data) {
-        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         return LocalDate.parse(data, inputFormat)
                 .format(outputFormat);

@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegistrationFormPage extends AbsBasePage {
     private final DateUtils dateUtils;
-
     public RegistrationFormPage(WebDriver driver) {
         super(driver, "/form.html");
         this.dateUtils = new DateUtils(driver);
