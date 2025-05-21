@@ -1,5 +1,6 @@
 package tests.otusTests;
 
+import dto.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,10 @@ public class WebDriverTests {
     @Tag("test")
     @DisplayName("Проверка открытия верной страницы")
     public void pageValidation(WebDriver driver) {
-        String enterText = "ОТУС";
+
+        User user = new User();
+        String enterText = user.getName();
+
         String title = "Тренажёр для оттачивания навыков работы с Selenium";
 
         TrainingPage trainingPage = new TrainingPage(driver);
@@ -44,8 +48,11 @@ public class WebDriverTests {
     @Tag("test")
     @DisplayName("Проверка формы")
     public void formValidation(WebDriver driver) {
-        String name = "Александ";
-        String email = "alexander@mail.ru";
+
+        User user = new User();
+        String name = user.getName();
+        String email = user.getEmail();
+
         String text = String.format("Форма отправлена с именем: %s и email: %s", name, email);
 
         TrainingPage trainingPage = new TrainingPage(driver);
