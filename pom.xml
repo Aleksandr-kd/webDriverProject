@@ -33,6 +33,7 @@
         <allure-report.version>2.30.0</allure-report.version>
         <aspectj.version>1.9.22</aspectj.version>
         <assertj-core.version>3.26.3</assertj-core.version>
+        <javafaker.version>1.0.2</javafaker.version>
 
         <base.url>https://otus.home.kartushin.su</base.url>
     </properties>
@@ -66,7 +67,7 @@
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <version>${javafaker.version}</version>
         </dependency>
     </dependencies>
 
