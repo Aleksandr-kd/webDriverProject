@@ -1,9 +1,11 @@
 package dto;
 
 import com.github.javafaker.Faker;
+import data.LanguageLevelData;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+
 
 public class User {
 
@@ -12,9 +14,7 @@ public class User {
     private final String email = faker.internet().emailAddress();
     private final String password = faker.internet().password();
     private final LocalDate data = faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-    String[] options = {"Начальный", "Средний", "Продвинутый", "Носитель языка"};
-    private final String englishLevel = faker.options().option(options);
+    private final LanguageLevelData languageLevel = faker.options().nextElement(LanguageLevelData.values());
 
     public String getName() {
         return name;
@@ -32,7 +32,7 @@ public class User {
         return data;
     }
 
-    public String getEnglishLevel() {
-        return englishLevel;
+    public LanguageLevelData getLanguageLevel() {
+        return languageLevel;
     }
 }

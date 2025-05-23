@@ -8,7 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.RegistrationFormPage;
 import extension.TestSetupExtension;
-import utils.LanguageLevelUtils;
 import utils.PasswordUtils;
 
 import java.time.format.DateTimeFormatter;
@@ -27,7 +26,7 @@ public class RegistrationFormTests {
         String name = user.getName();
         String email = user.getEmail();
         String birthDate = user.getData().format(DateTimeFormatter.ISO_DATE);
-        String language = user.getEnglishLevel();
+        String language = user.getLanguageLevel().getRussianName();
         String password = user.getPassword();
         String passwordRepeat = user.getPassword();
 
@@ -35,8 +34,7 @@ public class RegistrationFormTests {
         registrationFormPage.open();
 
         String birthDateFormatted = registrationFormPage.dataRegistration(birthDate);
-        LanguageLevelUtils languageLevelUtils = new LanguageLevelUtils();
-        String languageLevelFormatted = languageLevelUtils.convert(language);
+        String languageLevelFormatted = user.getLanguageLevel().getEnglishName();
 
         String expectedText = String.format("Имя пользователя: %s Электронная почта: %s Дата рождения: %s " +
                 "Уровень языка: %s", name, email, birthDate, languageLevelFormatted);
@@ -63,7 +61,7 @@ public class RegistrationFormTests {
         String name = user.getName();
         String email = user.getEmail();
         String birthDate = user.getData().format(DateTimeFormatter.ISO_DATE);
-        String language = user.getEnglishLevel();
+        String language = user.getLanguageLevel().getRussianName();
         String password = user.getPassword();
         String passwordRepeatFalse = passwordUtils.passwordRepeat(password);
         String alertText = "Пароли не совпадают!";
