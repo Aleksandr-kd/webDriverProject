@@ -1,13 +1,13 @@
 package tests.otusTests;
 
 import dto.User;
+import extension.TestSetupExtension;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.RegistrationFormPage;
-import extension.TestSetupExtension;
 import utils.PasswordUtils;
 
 import java.time.format.DateTimeFormatter;
@@ -25,7 +25,7 @@ public class RegistrationFormTests {
         User user = new User();
         String name = user.getName();
         String email = user.getEmail();
-        String birthDate = user.getData().format(DateTimeFormatter.ISO_DATE);
+        String birthDate = user.getData();
         String language = user.getLanguageLevel().getRussianName();
         String password = user.getPassword();
         String passwordRepeat = user.getPassword();
@@ -33,17 +33,17 @@ public class RegistrationFormTests {
         RegistrationFormPage registrationFormPage = new RegistrationFormPage(driver);
         registrationFormPage.open();
 
-        String birthDateFormatted = registrationFormPage.dataRegistration(birthDate);
+        String birthDateFormatted = user.getDataFaker().format(DateTimeFormatter.ISO_DATE);
         String languageLevelFormatted = user.getLanguageLevel().getEnglishName();
 
         String expectedText = String.format("Имя пользователя: %s Электронная почта: %s Дата рождения: %s " +
-                "Уровень языка: %s", name, email, birthDate, languageLevelFormatted);
+                "Уровень языка: %s", name, email, birthDateFormatted, languageLevelFormatted);
 
         registrationFormPage.formRegistration(name,
                 email,
                 password,
                 passwordRepeat,
-                birthDateFormatted,
+                birthDate,
                 language
         );
         registrationFormPage.userRegistration();
@@ -60,7 +60,7 @@ public class RegistrationFormTests {
         PasswordUtils passwordUtils = new PasswordUtils();
         String name = user.getName();
         String email = user.getEmail();
-        String birthDate = user.getData().format(DateTimeFormatter.ISO_DATE);
+        String birthDate = user.getData();
         String language = user.getLanguageLevel().getRussianName();
         String password = user.getPassword();
         String passwordRepeatFalse = passwordUtils.passwordRepeat(password);
@@ -73,7 +73,8 @@ public class RegistrationFormTests {
                 password,
                 passwordRepeatFalse,
                 birthDate,
-                language);
+                language
+        );
         registrationFormPage.userRegistration();
         registrationFormPage.checkRegistrationFalse(alertText);
         registrationFormPage.closeAlert();

@@ -1,21 +1,16 @@
 package pages;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import utils.DateUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RegistrationFormPage extends AbsBasePage {
-    private final DateUtils dateUtils;
     public RegistrationFormPage(WebDriver driver) {
         super(driver, "/form.html");
-        this.dateUtils = new DateUtils(driver);
     }
 
     @FindBy(id = "username")
@@ -62,7 +57,24 @@ public class RegistrationFormPage extends AbsBasePage {
 
     @Step("Установить дату рождения пользователя")
     public void setBirthDate(String birthdateUser) {
-        dateUtils.setDate(birthDate, birthdateUser);
+        setDate(birthDate, birthdateUser);
+    }
+
+    @Step("Установить дату")
+    public void setDate(WebElement element, String date) {
+        String day = date.substring(0, 2);
+        String month = date.substring(3, 5);
+        String year = date.substring(6);
+
+        element.click();
+        element.clear();
+
+        new Actions(driver)
+                .sendKeys(element, day)
+                .sendKeys(month)
+                .sendKeys(year)
+                .sendKeys(Keys.TAB)
+                .perform();
     }
 
     @Step("Установить уровень языка пользователя")
@@ -80,11 +92,6 @@ public class RegistrationFormPage extends AbsBasePage {
     @Step("Получение текста после регистрации")
     public String getTextRegistration() {
         return output.getText();
-    }
-
-    @Step("Форматирование даты")
-    public String dataRegistration(String data) {
-        return dateUtils.dateFormatter(data);
     }
 
     @Step("Отображение alert ошибки")
