@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.RegistrationFormPage;
-import utils.PasswordUtils;
 
 import java.time.format.DateTimeFormatter;
 
@@ -57,13 +56,12 @@ public class RegistrationFormTests {
     public void testNotCorrectPassword(WebDriver driver) {
 
         User user = new User();
-        PasswordUtils passwordUtils = new PasswordUtils();
         String name = user.getName();
         String email = user.getEmail();
         String birthDate = user.getData();
         String language = user.getLanguageLevel().getRussianName();
         String password = user.getPassword();
-        String passwordRepeatFalse = passwordUtils.passwordRepeat(password);
+        String passwordRepeatFalse = password + "password";
         String alertText = "Пароли не совпадают!";
 
         RegistrationFormPage registrationFormPage = new RegistrationFormPage(driver);
