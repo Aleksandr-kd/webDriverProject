@@ -39,7 +39,7 @@ public class RegistrationFormTests {
                 "Уровень языка: %s", name, email, birthDateFormatted, languageLevelFormatted);
 
         registrationFormPage
-                .formRegistration(user)
+                .formRegistrationTrue(user)
                 .userRegistration()
                 .checkRegistration(expectedText);
     }
@@ -49,10 +49,9 @@ public class RegistrationFormTests {
     @Tag("autotest")
     @DisplayName("Проверка валидации пароля.")
     public void testNotCorrectPassword() {
-
         registrationFormPage
                 .open()
-                .formRegistration(user)
+                .formRegistrationFalse(user)
                 .userRegistration()
                 .checkRegistrationFalse("Пароли не совпадают!")
                 .closeAlert()

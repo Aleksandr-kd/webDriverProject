@@ -35,7 +35,6 @@ public class TestSetupExtension implements BeforeEachCallback, AfterTestExecutio
         if (context.getExecutionException().isPresent()) {
             screenshotUtils.takeScreenshot(driver, "Error: " + context.getDisplayName());
         }
-
         if (driver != null) {
             driver.quit();
         }

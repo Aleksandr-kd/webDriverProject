@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>${encoding.type}</project.reporting.outputEncoding>
 
         <!-- Java version -->
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
@@ -100,7 +100,7 @@
                             junit.jupiter.execution.parallel.mode.default=concurrent
                             junit.jupiter.execution.parallel.mode.classes.default=concurrent
                             junit.jupiter.execution.parallel.config.strategy=fixed
-                            junit.jupiter.execution.parallel.config.fixed.parallelism=5
+                            junit.jupiter.execution.parallel.config.fixed.parallelism=4
                         </configurationParameters>
                     </properties>
 
