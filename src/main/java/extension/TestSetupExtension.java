@@ -3,12 +3,12 @@ package extension;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import factory.WebDriverFactory;
+import modules.GuiceComponentModule;
 import modules.GuiceDtoModule;
 import modules.GuicePageModule;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.jupiter.api.extension.ParameterResolver;
 import org.openqa.selenium.WebDriver;
 import utils.AllureScreenshotUtils;
 
@@ -24,7 +24,9 @@ public class TestSetupExtension implements BeforeEachCallback, AfterTestExecutio
     @Override
     public void beforeEach(ExtensionContext context) {
         driver = new WebDriverFactory().getDriver();
-        this.injector = Guice.createInjector(new GuicePageModule(driver), new GuiceDtoModule());
+        this.injector = Guice.createInjector(new GuicePageModule(driver),
+                new GuiceDtoModule(),
+                new GuiceComponentModule(driver));
         injector.injectMembers(context.getTestInstance().get());
     }
 

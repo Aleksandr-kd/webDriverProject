@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.Path;
 import dto.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
@@ -9,9 +10,10 @@ import org.openqa.selenium.support.FindBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+@Path("/form.html")
 public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
     public RegistrationFormPage(WebDriver driver) {
-        super(driver, "/form.html");
+        super(driver);
     }
 
     @FindBy(id = "username")
@@ -87,7 +89,7 @@ public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
 
     @Step("Зарегистрировать пользователя")
     public RegistrationFormPage userRegistration() {
-        driver.findElement(By.cssSelector("form#registrationForm input[type='submit']")).click();
+        $(By.cssSelector("form#registrationForm input[type='submit']")).click();
         return this;
     }
 

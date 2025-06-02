@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.Path;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,9 +9,10 @@ import org.openqa.selenium.support.FindBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+@Path("/training.html")
 public class TrainingPage extends AbsBasePage<TrainingPage> {
     public TrainingPage(WebDriver driver) {
-        super(driver, "/training.html");
+        super(driver);
     }
 
     @FindBy(tagName = "h1")
