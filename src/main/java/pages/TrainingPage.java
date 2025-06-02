@@ -8,8 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class TrainingPage extends AbsBasePage {
-
+public class TrainingPage extends AbsBasePage<TrainingPage> {
     public TrainingPage(WebDriver driver) {
         super(driver, "/training.html");
     }
@@ -57,8 +56,9 @@ public class TrainingPage extends AbsBasePage {
     }
 
     @Step("Закрыть модальное окно")
-    public void closeModal() {
+    public TrainingPage closeModal() {
         closeModalButton.click();
+        return this;
     }
 
     @Step("Текст модального окна")
@@ -87,33 +87,38 @@ public class TrainingPage extends AbsBasePage {
     }
 
     @Step("Ввести имя и почту")
-    public void openingModalWindow(String name, String email) {
+    public TrainingPage openingModalWindow(String name, String email) {
         enterName(name);
         enterEmail(email);
         clickSend();
+        return this;
     }
 
     @Step("Проверка работы модального окна")
-    public void openingModalWindow(String text) {
+    public TrainingPage checkModalWindow(String text) {
         assertThat(getTextModal())
                 .isEqualTo(text);
+        return this;
     }
 
-    @Step("Проверка сообщения на залёном фоне")
-    public void messageGreenBackground(String text) {
+    @Step("Проверка сообщения на зелёном фоне")
+    public TrainingPage messageGreenBackground(String text) {
         assertThat(getTextGreen())
                 .isEqualTo(text);
+        return this;
     }
 
     @Step("Проверка открытия нужной страницы")
-    public void pageTitleShouldBeSameAs(String title) {
+    public TrainingPage pageTitleShouldBeSameAs(String title) {
         assertThat(getSimulatorPageText())
                 .isEqualTo(title);
+        return this;
     }
 
     @Step("Проверка ввода текст")
-    public void textInputFieldMustBeSameAs(String text) {
+    public TrainingPage textInputFieldMustBeSameAs(String text) {
         assertThat(setTextInput(text))
                 .isEqualTo(text);
+        return this;
     }
 }

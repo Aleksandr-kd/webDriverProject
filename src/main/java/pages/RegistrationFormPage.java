@@ -1,5 +1,6 @@
 package pages;
 
+import dto.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class RegistrationFormPage extends AbsBasePage {
+public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
     public RegistrationFormPage(WebDriver driver) {
         super(driver, "/form.html");
     }
@@ -85,8 +86,9 @@ public class RegistrationFormPage extends AbsBasePage {
     }
 
     @Step("Зарегистрировать пользователя")
-    public void userRegistration() {
+    public RegistrationFormPage userRegistration() {
         driver.findElement(By.cssSelector("form#registrationForm input[type='submit']")).click();
+        return this;
     }
 
     @Step("Получение текста после регистрации")
@@ -105,9 +107,10 @@ public class RegistrationFormPage extends AbsBasePage {
     }
 
     @Step("Закрыть alert")
-    public void closeAlert() {
+    public RegistrationFormPage closeAlert() {
         Alert alert = driver.switchTo().alert();
         alert.accept();
+        return this;
     }
 
     @Step("Текст alert ошибки")
@@ -117,31 +120,35 @@ public class RegistrationFormPage extends AbsBasePage {
     }
 
     @Step("Заполнение формы регистрации")
-    public void formRegistration(String name, String email, String password, String passwordRepeat
-            , String birthDate, String language) {
-        setName(name);
-        setEmail(email);
-        setPassword(password);
-        setPasswordRepeat(passwordRepeat);
-        setBirthDate(birthDate);
-        setLanguageLevel(language);
+    public RegistrationFormPage formRegistration(User user) {
+        setName(user.getName());
+        setEmail(user.getEmail());
+        setPassword(user.getPassword());
+        setPasswordRepeat(user.getPassword());
+        setBirthDate(user.getData());
+        setLanguageLevel(user.getLanguageLevel().getRussianName());
+        setPasswordRepeat(user.getPassword() + "password");
+        return this;
     }
 
     @Step("Проверка регистрации")
-    public void checkRegistration(String title) {
+    public RegistrationFormPage checkRegistration(String title) {
         assertThat(getTextRegistration().replace("\n", " "))
                 .isEqualTo(title.replace("\n", " "));
+        return this;
     }
 
     @Step("Проверка ввода повторного пароля")
-    public void checkRegistrationFalse(String title) {
+    public RegistrationFormPage checkRegistrationFalse(String title) {
         assertThat(getAlertText())
                 .isEqualTo(title);
+        return this;
     }
 
     @Step("Отображения уведомления об ошибки")
-    public void passwordErrorDisplayed() {
+    public RegistrationFormPage passwordErrorDisplayed() {
         assertThat(isPasswordErrorDisplayed())
                 .isFalse();
+        return this;
     }
 }

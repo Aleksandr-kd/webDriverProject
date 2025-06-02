@@ -1,24 +1,26 @@
 package pages;
 
+import common.AbsCommon;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 
-public abstract class AbsBasePage {
+public abstract class AbsBasePage<T> extends AbsCommon {
 
-    protected WebDriver driver = null;
     private String path = "";
     private final String baseUrl = System.getProperty("base.url");
 
     public AbsBasePage(WebDriver driver, String path) {
-        this.driver = driver;
+        super(driver);
         this.path = path;
         PageFactory.initElements(driver, this);
     }
 
     @Step("Открытие страницы")
-    public void open() {
+    public T open() {
         driver.get(baseUrl + path);
+
+        return (T) this;
     }
 }
