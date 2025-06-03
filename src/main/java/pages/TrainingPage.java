@@ -53,8 +53,9 @@ public class TrainingPage extends AbsBasePage<TrainingPage> {
     }
 
     @Step("Открыть модальное окно")
-    public void openModal() {
+    public TrainingPage openModal() {
         openModalButton.click();
+        return this;
     }
 
     @Step("Закрыть модальное окно")

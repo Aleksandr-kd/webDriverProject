@@ -21,12 +21,12 @@ public class TestSetupExtension implements BeforeEachCallback, AfterEachCallback
 
     private WebDriver driver;
 
-    private ExtensionContext.Namespace NAMESPACE = ExtensionContext.Namespace.create(TestSetupExtension.class);
+    private ExtensionContext.Namespace namespace = ExtensionContext.Namespace.create(TestSetupExtension.class);
 
     @Override
     public void beforeEach(ExtensionContext context) {
         driver = new WebDriverFactory().getDriver();
-        context.getStore(NAMESPACE).put("driver", driver);
+        context.getStore(namespace).put("driver", driver);
 
         this.injector = Guice.createInjector(
                 new GuicePageModule(driver),
@@ -40,7 +40,7 @@ public class TestSetupExtension implements BeforeEachCallback, AfterEachCallback
 
     @Override
     public void afterEach(ExtensionContext context) {
-        driver = context.getStore(NAMESPACE).get("driver", WebDriver.class);
+        driver = context.getStore(namespace).get("driver", WebDriver.class);
         if (context.getExecutionException().isPresent()) {
             screenshotUtils.takeScreenshot(driver, "Error: " + context.getDisplayName());
         }
