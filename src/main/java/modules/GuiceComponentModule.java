@@ -14,7 +14,7 @@ public class GuiceComponentModule extends AbstractModule {
     }
 
     @Provides
-    @Singleton
+//    @Singleton
     public NewsBlock newsBlock(){
         return new NewsBlock(driver);
     }

@@ -14,14 +14,10 @@ public class WebDriverFactory {
     private final String browserName = System.getProperty("browser");
 
     public WebDriver getDriver() {
-        switch (browserName.toLowerCase()) {
-            case "chrome": {
-                return new ChromeDriver((ChromeOptions) new ChromeSettings().settings());
-            }
-            case "firefox": {
-                return new FirefoxDriver((FirefoxOptions) new FirefoxSettings().settings());
-            }
-        }
-        throw new BrowserNotSupportedException(browserName);
+        return switch (browserName.toLowerCase()) {
+            case "chrome" -> new ChromeDriver((ChromeOptions) new ChromeSettings().settings());
+            case "firefox" -> new FirefoxDriver((FirefoxOptions) new FirefoxSettings().settings());
+            default -> throw new BrowserNotSupportedException(browserName);
+        };
     }
 }

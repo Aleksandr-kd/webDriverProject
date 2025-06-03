@@ -6,12 +6,13 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.RegistrationFormPage;
 
 import java.time.format.DateTimeFormatter;
 
-
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(TestSetupExtension.class)
 public class RegistrationFormTests {
 

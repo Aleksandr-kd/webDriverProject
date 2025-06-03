@@ -35,6 +35,7 @@
         <assertj-core.version>3.26.3</assertj-core.version>
         <javafaker.version>1.0.2</javafaker.version>
         <guice.version>7.0.0</guice.version>
+        <guice-assistedinject.version>5.1.0</guice-assistedinject.version>
 
         <base.url>https://otus.home.kartushin.su</base.url>
     </properties>
@@ -75,6 +76,11 @@
             <artifactId>guice</artifactId>
             <version>${guice.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-assistedinject</artifactId>
+            <version>${guice-assistedinject.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -100,7 +106,7 @@
                             junit.jupiter.execution.parallel.mode.default=concurrent
                             junit.jupiter.execution.parallel.mode.classes.default=concurrent
                             junit.jupiter.execution.parallel.config.strategy=fixed
-                            junit.jupiter.execution.parallel.config.fixed.parallelism=4
+                            junit.jupiter.execution.parallel.config.fixed.parallelism=5
                         </configurationParameters>
                     </properties>
 

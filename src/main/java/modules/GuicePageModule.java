@@ -12,17 +12,17 @@ public class GuicePageModule extends AbstractModule {
     private WebDriver driver;
 
     public GuicePageModule(WebDriver driver) {
-        this.driver = driver;
+        this.driver= driver;
     }
 
     @Provides
-    @Singleton
+//    @Singleton
     public RegistrationFormPage registrationFormPage(){
         return new RegistrationFormPage(driver);
     }
 
     @Provides
-    @Singleton
+//    @Singleton
     public TrainingPage trainingPage(){
         return new TrainingPage(driver);
     }
