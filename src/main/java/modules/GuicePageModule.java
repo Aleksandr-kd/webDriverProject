@@ -16,13 +16,13 @@ public class GuicePageModule extends AbstractModule {
     }
 
     @Provides
-//    @Singleton
+    @Singleton
     public RegistrationFormPage registrationFormPage(){
         return new RegistrationFormPage(driver);
     }
 
     @Provides
-//    @Singleton
+    @Singleton
     public TrainingPage trainingPage(){
         return new TrainingPage(driver);
     }

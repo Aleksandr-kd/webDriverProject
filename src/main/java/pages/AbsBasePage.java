@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class AbsBasePage<T> extends AbsCommon {
 
-    private String path = "";
     private final String baseUrl = System.getProperty("base.url");
 
     public AbsBasePage(WebDriver driver) {
