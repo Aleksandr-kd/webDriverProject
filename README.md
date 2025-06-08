@@ -1,4 +1,4 @@
-## Запуск тестов в IntelliJ IDEA
+### Запуск тестов в IntelliJ IDEA
 ```Пример: mvn clean test "-Dgroups=test" "-Dbrowser=firefox" "-Dmode=fulscreen"
 
 
