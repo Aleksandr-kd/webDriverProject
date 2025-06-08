@@ -47,11 +47,10 @@ public class WebDriverTests {
     @Tag("test")
     @DisplayName("Проверка формы")
     public void formValidation() {
-
         String name = user.getName();
         String email = user.getEmail();
 
-        String text = String.format("Форма отпра влена с именем: %s и email: %s", name, email);
+        String text = String.format("Форма отправлена с именем: %s и email: %s", name, email);
 
         trainingPage
                 .open()

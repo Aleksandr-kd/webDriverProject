@@ -12,7 +12,6 @@ import pages.RegistrationFormPage;
 
 import java.time.format.DateTimeFormatter;
 
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(TestSetupExtension.class)
 public class RegistrationFormTests {
 
@@ -23,7 +22,7 @@ public class RegistrationFormTests {
     private User user;
 
     @Test
-    @Tag("autotest")
+    @Tag("test")
     @DisplayName("Проверка регистрации.")
     public void testCorrectPassword() {
 
@@ -47,7 +46,7 @@ public class RegistrationFormTests {
 
 
     @Test
-    @Tag("autotest")
+    @Tag("test")
     @DisplayName("Проверка валидации пароля.")
     public void testNotCorrectPassword() {
         registrationFormPage

@@ -12,6 +12,8 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
 import utils.AllureScreenshotUtils;
 
+import java.net.MalformedURLException;
+
 
 public class TestSetupExtension implements BeforeEachCallback, AfterEachCallback {
 
@@ -24,7 +26,7 @@ public class TestSetupExtension implements BeforeEachCallback, AfterEachCallback
     private ExtensionContext.Namespace namespace = ExtensionContext.Namespace.create(TestSetupExtension.class);
 
     @Override
-    public void beforeEach(ExtensionContext context) {
+    public void beforeEach(ExtensionContext context) throws MalformedURLException {
         driver = new WebDriverFactory().getDriver();
         context.getStore(namespace).put("driver", driver);
 
