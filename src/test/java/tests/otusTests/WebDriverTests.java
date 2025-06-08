@@ -23,7 +23,6 @@ public class WebDriverTests {
     @Tag("test")
     @DisplayName("Проверка открытия верной страницы")
     public void pageValidation() {
-
         String enterText = user.getName();
 
         trainingPage
@@ -38,8 +37,7 @@ public class WebDriverTests {
     public void modalWindowValidation() {
         trainingPage
                 .open()
-                .openModal();
-        trainingPage
+                .openModal()
                 .checkModalWindow("Вы открыли модальное окно. Нажмите на крестик или в любое место вне окна" +
                         ", чтобы закрыть его.")
                 .closeModal();
@@ -49,7 +47,6 @@ public class WebDriverTests {
     @Tag("test")
     @DisplayName("Проверка формы")
     public void formValidation() {
-
         String name = user.getName();
         String email = user.getEmail();
 

@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.Path;
 import dto.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
@@ -9,9 +10,10 @@ import org.openqa.selenium.support.FindBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+@Path("/form.html")
 public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
     public RegistrationFormPage(WebDriver driver) {
-        super(driver, "/form.html");
+        super(driver);
     }
 
     @FindBy(id = "username")
@@ -56,6 +58,11 @@ public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
         confirmPassword.sendKeys(passwordTwoRegistration);
     }
 
+    @Step("Повторить неверный пароль пользователя")
+    public void setPasswordRepeatFalse(String passwordTwoRegistration) {
+        confirmPassword.sendKeys(passwordTwoRegistration);
+    }
+
     @Step("Установить дату рождения пользователя")
     public void setBirthDate(String birthdateUser) {
         setDate(birthDate, birthdateUser);
@@ -87,7 +94,7 @@ public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
 
     @Step("Зарегистрировать пользователя")
     public RegistrationFormPage userRegistration() {
-        driver.findElement(By.cssSelector("form#registrationForm input[type='submit']")).click();
+        $(By.cssSelector("form#registrationForm input[type='submit']")).click();
         return this;
     }
 
@@ -120,14 +127,24 @@ public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
     }
 
     @Step("Заполнение формы регистрации")
-    public RegistrationFormPage formRegistration(User user) {
+    public RegistrationFormPage formRegistrationTrue(User user) {
         setName(user.getName());
         setEmail(user.getEmail());
         setPassword(user.getPassword());
         setPasswordRepeat(user.getPassword());
         setBirthDate(user.getData());
         setLanguageLevel(user.getLanguageLevel().getRussianName());
-        setPasswordRepeat(user.getPassword() + "password");
+        return this;
+    }
+
+    @Step("Заполнение формы регистрации")
+    public RegistrationFormPage formRegistrationFalse(User user) {
+        setName(user.getName());
+        setEmail(user.getEmail());
+        setPassword(user.getPassword());
+        setPasswordRepeatFalse(user.getPassword() + "password");
+        setBirthDate(user.getData());
+        setLanguageLevel(user.getLanguageLevel().getRussianName());
         return this;
     }
 
