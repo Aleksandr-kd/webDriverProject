@@ -29,9 +29,12 @@ public class WebDriverFactory {
             return new RemoteWebDriver(new URL(remoteUrl), mutableCapabilities);
         }
         switch (browserName.toLowerCase()) {
-            case "chrome" -> new ChromeDriver((ChromeOptions) new ChromeSettings().settings());
-            case "firefox" -> new FirefoxDriver((FirefoxOptions) new FirefoxSettings().settings());
+            case "chrome":
+                return new ChromeDriver((ChromeOptions) new ChromeSettings().settings());
+            case "firefox":
+                return new FirefoxDriver((FirefoxOptions) new FirefoxSettings().settings());
+            default:
+                throw new BrowserNotSupportedException(browserName);
         }
-        throw new BrowserNotSupportedException(browserName);
     }
 }
