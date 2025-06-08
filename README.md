@@ -3,6 +3,7 @@
 
 
 ## Запуск в bash
+### Пример:
 ### mvn clean test \
 ### "-Dgroups=test" \
 ### "-Dbrowser=firefox" \
