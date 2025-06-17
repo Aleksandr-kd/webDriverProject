@@ -4,7 +4,6 @@ import annotations.Path;
 import dto.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -65,24 +64,16 @@ public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
 
     @Step("Установить дату рождения пользователя")
     public void setBirthDate(String birthdateUser) {
-        setDate(birthDate, birthdateUser);
+        setDate(birthdateUser);
     }
 
     @Step("Установить дату")
-    public void setDate(WebElement element, String date) {
-        String day = date.substring(0, 2);
-        String month = date.substring(3, 5);
-        String year = date.substring(6);
-
-        element.click();
-        element.clear();
-
-        new Actions(driver)
-                .sendKeys(element, day)
-                .sendKeys(month)
-                .sendKeys(year)
-                .sendKeys(Keys.TAB)
-                .perform();
+    public void setDate(String date) {
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].value = arguments[1];",
+                birthDate,
+                date
+        );
     }
 
     @Step("Установить уровень языка пользователя")
@@ -132,6 +123,7 @@ public class RegistrationFormPage extends AbsBasePage<RegistrationFormPage> {
         setEmail(user.getEmail());
         setPassword(user.getPassword());
         setPasswordRepeat(user.getPassword());
+
         setBirthDate(user.getData());
         setLanguageLevel(user.getLanguageLevel().getRussianName());
         return this;
