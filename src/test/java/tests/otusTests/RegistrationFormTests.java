@@ -6,11 +6,11 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.RegistrationFormPage;
 
 import java.time.format.DateTimeFormatter;
+
 
 @ExtendWith(TestSetupExtension.class)
 public class RegistrationFormTests {
@@ -43,7 +43,6 @@ public class RegistrationFormTests {
                 .userRegistration()
                 .checkRegistration(expectedText);
     }
-
 
     @Test
     @Tag("test")

@@ -15,7 +15,7 @@ public class User {
     private final String email = faker.internet().emailAddress();
     private final String password = faker.internet().password();
     private final LocalDate dataFaker = faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    private final String data = dataFaker.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    private final String data = getDataFaker().format(DateTimeFormatter.ISO_DATE);
     private final LanguageLevelData languageLevel = faker.options().nextElement(LanguageLevelData.values());
 
     public String getName() {
@@ -40,5 +40,17 @@ public class User {
 
     public LanguageLevelData getLanguageLevel() {
         return languageLevel;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", dataFaker=" + dataFaker +
+                ", data='" + data + '\'' +
+                ", languageLevel=" + languageLevel +
+                '}';
     }
 }
